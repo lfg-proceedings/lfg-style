@@ -1,0 +1,3 @@
+# LFG Proceedings style files
+
+Use the `lfg-proceedings-template.tex` file and compile beautiful proceedings papers for the LFG Proceedings.
