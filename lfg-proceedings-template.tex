@@ -1,0 +1,208 @@
+\documentclass[linguex]{lfg-proc}
+
+%===========================================================
+% Fill in your title, author names, and affiliations here
+
+\title{Your title here}
+\author{Author 1 \affiliation{Author 1's affiliation}%
+  % \and Author 2 \affiliation{Author 2's affiliation}
+  % \and Author 3 \affiliation{Author 3's affiliation}
+  % \and Author 4 \affiliation{Author 4's affiliation}
+}
+
+%===========================================================
+% Put your own package calls and macros here
+
+% \usepackage{expex}
+\usepackage{pifont}
+% \newcommand{\tuple}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\goodex}{\makebox[0pt][r]{\normalfont\ding{51}\ignorespaces}}
+\newcommand{\badex}{\makebox[0pt][r]{\normalfont\ding{55}\ignorespaces}}
+
+%===========================================================
+
+\usepackage{layouts}
+
+\begin{document}
+\maketitle
+
+%===========================================================
+% Put the abstract here
+
+\begin{abstract}
+Your short ($\leq$150 words) abstract goes here.
+\end{abstract}
+
+%===========================================================
+% Body text here
+
+\section{Introduction}
+
+This document serves as a style guide for papers submitted to the LFG
+Proceedings, and also as an example\slash template to be used by authors.
+
+\section{Style}
+
+\subsection{Title page}
+\begin{itemize}
+  \item Please use sentence capitalisation in your heading; i.e., don't
+        capitalise every content word. So \Next is correct, while \NNext is not:
+
+        \ex. \goodex\textbf{A very interesting paper}
+
+        \ex. \badex\textbf{A Very Interesting Paper}
+
+\end{itemize}
+
+\subsection{Acknowledgements}
+\begin{itemize}
+  \item Use the \verb=\acknowledgements= command to add an acknowledgements
+        footnote after your first sentence.\acknowledgements{I thank X and Y.}
+\end{itemize}
+
+\subsection{Page numbering}
+\begin{itemize}
+  \item Do not put page numbers on your paper -- this will be done
+        automatically.
+\end{itemize}
+
+
+\subsection{Referencing}
+
+\begin{itemize}
+  \item We use Bib\TeX\ with the \verb=natbib= package.
+  \item Use \verb=\citet= when mentioning the reference in a running text:
+        ``\citet{Dalrymple2015} deals with morphology in LFG''.
+        \begin{itemize}
+          \item Use \verb=\citealt= to omit the parentheses when the reference
+                is already inside parentheses: ``LFG covers all aspects of
+                linguistic stucture (and this includes morphology, as
+                \citealt{Dalrymple2015} shows)''.
+          \item Note that we \textbf{don't} follow the practice of referring to
+                \emph{works} without parentheses and \emph{authors} with --
+                there are too many fuzzy cases.
+        \end{itemize}
+  \item Use \verb=\citep= for parenthetical references: ``Morphology is easy to
+        deal with in LFG \citep{Dalrymple2015}''.
+  \item Both commands take an optional argument for page numbers:
+        ``\citet[66]{Dalrymple2015} illustrates the split between p-form and
+        s-form \citep[177]{dalrymple-mycock:prosody}''.
+\end{itemize}
+
+\subsection{Bibliography}
+
+\begin{itemize}
+  \item If you use the \verb=lfg-sp.bst= style file, everything should Just
+        Work.
+        \begin{itemize}
+          \item In general, this follows the LSA's
+                \href{https://www.linguisticsociety.org/resource/unified-style-sheet}{Unified
+                Style Sheet}.
+            \end{itemize}
+
+  \item We include the \verb=lfg-master.bib= which was put together for the
+        \textit{Handbook of Lexical Functional Grammar} \citep{lfg-handbook} as
+        a reference. Please stick to the format of entries in here as far as
+        possible, with the exception of the following point.
+
+  \item Many of the references in \verb=lfg-master.bib=, in particular those for
+        LFG Proceedings papers, do not include links. We ask, however, that you
+        include links in your \verb=.bib= entries whenever you can, and that you
+        prefer DOIs to more brittle URLs where possible.
+        \begin{itemize}
+          \item If your entry includes both a DOI and a URL, only the DOI will
+                be displayed.
+          \item Note that the contents of the Bib\TeX\ \verb=doi= field should not
+                include the full URL; that is, write \Next not \NNext in your
+                \verb=.bib= file entry:
+
+                \ex. \goodex\texttt{doi = \{10.5281/zenodo.10037797\}}
+
+                \ex. \badex\texttt{doi = \{https://doi.org/10.5281/zenodo.10037797\}}
+
+        \end{itemize}
+\end{itemize}
+
+\subsection{Linguistic examples}
+
+\begin{itemize}
+  \item By default, we provide the \href{https://ctan.org/pkg/linguex}{linguex}
+  package to format examples. This has a simple syntax: use \verb=\ex.= to
+  introduce a new example, \verb=\a.= to introduce a new sub-list, and
+  \verb=\b.= for subsequent sub-examples (you can also use \verb=\c.=,
+  \verb=\d.=, etc., but these do exactly the same thing as \verb=\b.=):
+
+        \ex. Here is an example.
+
+        \ex. Here is an example that has sub-examples.%
+        \a. Like this.%
+        \b. And this.%
+        \c. And so on.%
+        \b. *And so fourth.\footnote{Note the proper alignment of the judgement
+        marker *. Fortunately, \texttt{linguex} handles this automatically.}
+
+  \item To include a three-line gloss, simply append the relevant example
+        command with a \verb=g= (\verb=\exg.=, \verb=\ag.=, etc.); then you
+        start each new line with a \verb=\\= (see the source code of the
+        following example for clarification):
+
+        \exg.%
+        Voici un example avec une glose.\\
+        here.is a.\textsc{masc} example with a.\textsc{fem} gloss\\
+        `Here is an example with a gloss.' \exlang{French}
+
+  \item In addition to the usual \verb=\label{...}= and \verb=\ref{...}= ways of
+        referring to examples, \verb=linguex= also provides the commands
+        \verb=\Next=, \verb=\NNext=, \verb=\Last=, and \verb=\LLast= to easily
+        refer to the next, next but one, last, and one before last examples (but
+        note that these references will not be clickable in the same way as
+        those created using a standard \verb=\label{...}=+\verb=\ref{...}= pair
+        will be).
+
+  \item One peculiarity of \verb=linguex= is that you must leave a blank line
+        after the end of an \verb=\ex.=, otherwise \LaTeX\ will throw an error.
+
+  \item Please see
+        \href{https://ctan.uib.no/macros/latex/contrib/linguex/doc/linguex-doc.pdf}{the
+        \texttt{linguex} documentation} for full details of the package.
+
+  \item Since \verb=\hfill= does not behave normally on the first (or second)
+        line of a glossed example, it can be difficult to display the sort of
+        right-aligned notes which are often used to identify the language of an
+        example. To solve this problem, the \verb=lfg-proc= class (when called
+        with the \verb=[linguex]= option, as it is by default) defines a command
+        \verb=\exlang{...}=: when used at the end of the third line of a glossed
+        example, this displays its argument as a right-aligned parenthetical
+        note on the first line of the example (as shown above for French).
+
+  \item You are free to use your own example package of choice instead of
+        \verb=linguex= if you prefer: simply remove the \verb=[linguex]= option
+        from the call to the \verb=lfg-proc= class at the start of this file and
+        then add an appropriate \verb=\usepackage{...}= as usual. Please make
+        sure that your examples look as close as possible to those shown here,
+        however.
+
+  \item \verb=lfg.cls= also loads the \verb=tipa= package by default, which can
+        be used to typeset IPA characters straightforwardly:
+        \textipa{/lAikDIs/}. If for whatever reason you really don't want to
+        load \verb=tipa=, simply pass the option \verb=notipa= to the
+        \verb=\documentclass= command at the top of this file.
+
+\end{itemize}
+
+
+\subsection{Structure}
+
+\subsubsection{Subsections}
+
+Don't use anything smaller than a \verb=\subsubsection=.
+
+
+%===========================================================
+% References
+
+\bibliographystyle{lfg-sp}
+\bibliography{sample}
+
+%===========================================================
+\end{document}
