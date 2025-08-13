@@ -21,8 +21,6 @@
 
 %===========================================================
 
-\usepackage{layouts}
-
 \begin{document}
 \maketitle
 
@@ -70,7 +68,8 @@ Proceedings, and also as an example\slash template to be used by authors.
 \subsection{Referencing}
 
 \begin{itemize}
-  \item We use Bib\TeX\ with the \verb=natbib= package.
+  \item We use Bib\TeX\ with the \verb=natbib= package (Bib\LaTeX/biber support
+        might come in the future \dots).
   \item Use \verb=\citet= when mentioning the reference in a running text:
         ``\citet{Dalrymple2015} deals with morphology in LFG''.
         \begin{itemize}
@@ -100,15 +99,19 @@ Proceedings, and also as an example\slash template to be used by authors.
                 Style Sheet}.
             \end{itemize}
 
-  \item We include the \verb=lfg-master.bib= which was put together for the
-        \textit{Handbook of Lexical Functional Grammar} \citep{lfg-handbook} as
-        a reference. Please stick to the format of entries in here as far as
-        possible, with the exception of the following point.
+  \item See the included \verb=sample.bib= for examples of how to format bib
+        entries.
 
-  \item Many of the references in \verb=lfg-master.bib=, in particular those for
-        LFG Proceedings papers, do not include links. We ask, however, that you
-        include links in your \verb=.bib= entries whenever you can, and that you
-        prefer DOIs to more brittle URLs where possible.
+  \item We also include the \verb=lfg-master.bib=, which was put together for
+        the \textit{Handbook of Lexical Functional Grammar}
+        \citep{lfg-handbook}, as a reference and a source to make it easy to
+        copy-paste \verb=.bib= entries from.
+
+  \item \emph{However}, many of the entries in \verb=lfg-master.bib=, in
+        particular those for LFG Proceedings papers, do not include links. We
+        ask that you \emph{do} include links in your \verb=.bib= entries
+        whenever you can, and that you prefer DOIs over more brittle URLs where
+        possible.
         \begin{itemize}
           \item If your entry includes both a DOI and a URL, only the DOI will
                 be displayed.
@@ -116,10 +119,23 @@ Proceedings, and also as an example\slash template to be used by authors.
                 include the full URL; that is, write \Next not \NNext in your
                 \verb=.bib= file entry:
 
-                \ex. \goodex\texttt{doi = \{10.5281/zenodo.10037797\}}
+                \ex. \goodex\ \texttt{doi = \{10.5281/zenodo.10037797\}}
 
-                \ex. \badex\texttt{doi = \{https://doi.org/10.5281/zenodo.10037797\}}
+                \ex. \badex\ \texttt{doi = \{https://doi.org/10.5281/zenodo.10037797\}}
 
+        \end{itemize}
+
+  \item \textbf{Note:} if (and only if) you wish to use the Chinese and Japanese
+        fonts included in some entries in the \texttt{lfg-master.bib} file, you
+        will need to do the following:
+        \begin{itemize}
+          \item Add \verb=\includepackage{fontspec}= to your preamble.
+          \item Compile with \texttt{lualatex} or \texttt{xelatex} (not \texttt{pdflatex}).
+          \item Include the following definitions in your preamble:\\
+          \verb=\newfontfamily\cn[]{SourceHanSerifTC} % Chinese font=
+          \verb=\newfontfamily\jpn[]{SourceHanSerifJP} % Japanese font=
+          \item If you do not already have the Source Han Serif fonts, you will also need to install them from here: \\
+          \url{https://source.typekit.com/source-han-serif/#get-the-fonts}
         \end{itemize}
 \end{itemize}
 
@@ -139,10 +155,11 @@ Proceedings, and also as an example\slash template to be used by authors.
         \b. And this.%
         \c. And so on.%
         \b. *And so fourth.\footnote{Note the proper alignment of the judgement
-        marker *. Fortunately, \texttt{linguex} handles this automatically.}
+        marker *. This is handled automatically by \texttt{linguex} for *, \#,
+        and \%.}
 
   \item To include a three-line gloss, simply append the relevant example
-        command with a \verb=g= (\verb=\exg.=, \verb=\ag.=, etc.); then you
+        command with a \verb=g= (\verb=\exg.=, \verb=\ag.=, etc.); then
         start each new line with a \verb=\\= (see the source code of the
         following example for clarification):
 
