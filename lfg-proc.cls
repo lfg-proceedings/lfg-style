@@ -50,6 +50,12 @@
 % Spacing in bibliography
 % \setlength{\bibsep}{0.3pt}
 
+% Required for e.g. Chinese/Japanese characters
+\RequirePackage[T1]{fontenc}
+
+% Better kerning/spacing
+%% \RequirePackage{microtype}
+
 % Hyperlink settings
 \RequirePackage[hyphens]{url}
 %
