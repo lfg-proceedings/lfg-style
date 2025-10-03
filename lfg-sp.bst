@@ -1193,6 +1193,7 @@ FUNCTION {manual}
   format.btitle "title" output.check
   organization address new.block.checkb
   organization "organization" bibinfo.check output
+  add.comma
   address "address" bibinfo.check output
   format.edition output
   new.block
