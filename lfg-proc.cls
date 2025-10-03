@@ -8,11 +8,14 @@
 \DeclareOption{twocolumn}{\OptionNotUsed}
 
 % Use linguex, but declare it last because it doesn't play nicely with tipa
-\DeclareOption{linguex}{\AtEndOfClass{%
-	\RequirePackage{linguex}}
+\DeclareOption{linguex}{%
+  \AtEndOfClass{%
+    \RequirePackage{linguex}
+    \renewcommand{\firstrefdash}{} % Removes dash between example number and letter in references
+  }%  
   % Command to right-align language name with linguex glossed examples; from
   % https://brianbuccola.com/right-aligned-text-in-a-linguex-gloss-example/
-  \newcommand{\exlang}[1]{\hfill\raisebox{1.9\baselineskip}[0pt][0pt]{(#1)}}
+  \newcommand{\exlang}[1]{\hfill\raisebox{1.9\baselineskip}[0pt][0pt]{(#1)}}%
 }
 
 % Use tipa; we assume you want this unless you explicitly say not with the notipa option
