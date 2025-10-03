@@ -3,7 +3,8 @@
 %%% the house style for bibliographies in the journal Semantics and Pragmatics.
 %%%
 %%% It differs from sp.bst in the following ways:
-%%%
+%%% > [2025/09/15] inproceedings entries should not add a superfluous comma
+%%%   where there are no page numbers (thanks to Mary Dalrymple for spotting this!)
 %%% > [2024/12/11] Book series should now appear in parentheses after the
 %%%   title even if there is no number field accompanying the series field.
 %%% > [2024/12/07] If the year field contains text, it will have the first
@@ -1157,7 +1158,10 @@ FUNCTION {inproceedings}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
-      add.comma
+      pages empty$
+        { }
+        { add.comma }
+      if$
       format.pages output
       new.sentence
       publisher empty$
